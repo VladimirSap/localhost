@@ -32,6 +32,9 @@ class Images extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, link, album_id', 'safe', 'on'=>'search'),
+            // this will allow empty field when page is update (remember here i create scenario update)
+            array('image', 'file', 'types'=>'jpg, gif, png'),
+
 		);
 	}
 

@@ -115,8 +115,12 @@ class ImagesController extends Controller
 		if(isset($_POST['Images']))
 		{
 			$model->attributes=$_POST['Images'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+
+            $uploadedFile=CUploadedFile::getInstance($model, 'image');
+
+            $uploadedFile->saveAs(Yii::app()->basePath.'/../banner/img.jpg');
+
+            $this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
